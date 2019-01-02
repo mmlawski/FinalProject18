@@ -1,4 +1,5 @@
 import random
+import time
 
 play_game = True
 
@@ -15,6 +16,7 @@ def start_game():
       game = 1
      elif start == "yes":
       print("Glad to hear! Let's go!")
+      game = 1
      else:
       print("Please pick either yes or no.")
 
@@ -40,6 +42,9 @@ def choose_team():
          else:
              bruh = False
              print(f"{team_choice} vs. {opponent_choice}: What a matchup! Let's get this game started!")
+
+def set_clock():
+    """Sets clock to begin game"""
 
 start_game()
 choose_team()
