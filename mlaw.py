@@ -1,5 +1,4 @@
 import random
-import time
 
 play_game = True
 
@@ -24,6 +23,8 @@ def choose_team():
     """Choosing your team and opponent"""
     blah = True
     global play_game
+    global team_choice
+    global opponent_choice
     while blah and play_game:
      team_choice = input("Which NFL team would you like to play with? ").title()
      NFL_teams = ["Jets", "Bills", "Dolphins", "Patriots", "Titans", "Texans", "Colts", "Jaguars", "Broncos", "Chiefs", "Chargers", "Raiders", "Browns", "Steelers", "Ravens", "Bengals", "Giants", "Eagles", "Redskins", "Cowboys", "Vikings", "Packers", "Lions", "Bears", "49Ers", "Seahawks", "Rams", "Cardinals", "Saints", "Falcons", "Ravens", "Buccaneers"]
@@ -42,11 +43,33 @@ def choose_team():
          else:
              bruh = False
              print(f"{team_choice} vs. {opponent_choice}: What a matchup! Let's get this game started!")
+    return
 
-def set_clock():
-    """Sets clock to begin game"""
+def kickoff():
+    """First play of game"""
+    kickoff_choice = input(f"The {opponent_choice} are kicking off to your end zone. Do you want to return the kickoff? ").lower()
+    global yard_line
+    if kickoff_choice == "yes":
+        if random.random() < 0.1:
+            if random.random() < 0.5:
+                kick_return = random.randint(1, 9)
+            else:
+                kick_return = random.randint(70, 100)
+        elif random.random() > 0.1 and random.random() < 0.25:
+            if random.random() < 0.5:
+                kick_return = random.randint(10, 19)
+            else:
+                kick_return = random.randint(50, 69)
+        elif random.random() > 0.25 and random.random() < .4:
+            kick_return = random.randint(40, 49)
+        else:
+            kick_return = random.randint(20, 39)
+        print(f"Your kick returner just returned the ball {kick_return} yards!")
+    else:
+        print("Touckback. Ball starts at your 25 yard-line.")
 
 start_game()
 choose_team()
+kickoff()
 
 
