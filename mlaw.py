@@ -1,12 +1,19 @@
 import random
 
 play_game = True
+location = 0
+kick_return = 0
+team_choice = 0
+opponent_choice = 0
+gain = 0
 
 def start_game():
     """Start for code"""
     print("Welcome to Pocket Football!")
     game = 0
+
     global play_game
+
     while game == 0:
      start = input("Would you like to play? Yes or no answers please. ").lower()
      if start == "no":
@@ -22,9 +29,11 @@ def start_game():
 def choose_team():
     """Choosing your team and opponent"""
     blah = True
+
     global play_game
     global team_choice
     global opponent_choice
+
     while blah and play_game:
      team_choice = input("Which NFL team would you like to play with? ").title()
      NFL_teams = ["Jets", "Bills", "Dolphins", "Patriots", "Titans", "Texans", "Colts", "Jaguars", "Broncos", "Chiefs", "Chargers", "Raiders", "Browns", "Steelers", "Ravens", "Bengals", "Giants", "Eagles", "Redskins", "Cowboys", "Vikings", "Packers", "Lions", "Bears", "49Ers", "Seahawks", "Rams", "Cardinals", "Saints", "Falcons", "Ravens", "Buccaneers"]
@@ -48,7 +57,10 @@ def choose_team():
 def kickoff():
     """First play of game"""
     kickoff_choice = input(f"The {opponent_choice} are kicking off to your end zone. Do you want to return the kickoff? ").lower()
-    global yard_line
+
+    global kick_return
+    global location
+
     if kickoff_choice == "yes":
         if random.random() < 0.1:
             if random.random() < 0.5:
@@ -64,12 +76,67 @@ def kickoff():
             kick_return = random.randint(40, 49)
         else:
             kick_return = random.randint(20, 39)
-        print(f"Your kick returner just returned the ball {kick_return} yards!")
+        print(f"Your kick returner just returned the ball {kick_return} yards! Ball starts at the {kick_return} yard-line. ")
     else:
-        print("Touckback. Ball starts at your 25 yard-line.")
+        kick_return = 25
+        print("You didn't say yes, so it's a touckback. Ball starts at the 25 yard-line.")
+    location = kick_return
+
+def play_selection():
+    """Player can choose to run or pass the ball"""
+    play = input("Do you want to run or pass the ball? ").lower()
+    global gain
+    if play == "run":
+        if random.random() < 0.6:
+          gain = random.randint(1, 9)
+        elif random.random() > 0.6 and random.random() < 0.85:
+          if random.random() < 0.5:
+            gain = random.randint(10, 29)
+          else:
+            gain = random.randint(-5, 0)
+        elif random.random() > 0.85 and random.random() < 0.95 :
+            gain = random.randint(30, 49)
+        else:
+            gain = random.randint(50, 99)
+        print(f"Your team ran the ball for {gain} yards!")
+    elif play == "pass":
+        if random.random() < 0.3:
+            gain = 0
+            print("The pass is incomplete.")
+        elif random.random() > 0.3 and random.random() < 0.35:
+            gain = random.randint(-5, 0)
+        elif random.random() > 0.35 and random.random() < 0.7:
+            gain = random.randint(1, 15)
+        elif random.random() > 0.7 and random.random() < 0.9:
+            gain = random.randint(16, 25)
+        elif random.random() > 0.9 and random.random() < 0.97:
+            gain = random.randint(26, 40)
+        else:
+            gain = random.randint(41, 99)
+        print(f"Your team got a completion of {gain} yards!")
+    elif play == "philly special":
+        print(f"NO ONE SAW THAT COMING! TOUCHDOWN {team_choice}! YOU WIN!")
+    else:
+        print("Please select a valid play choice.")
+
+def ball_location():
+    """Will tell player where they are on the field"""
+
+    global location
+    global gain
+
+    location += gain
+
+    print(f"The ball is at the {location} yard-line.")
 
 start_game()
 choose_team()
 kickoff()
+print(location)
+game_continue = True
+while game_continue == True:
+  play_selection()
+
+  ball_location()
 
 
