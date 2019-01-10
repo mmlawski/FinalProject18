@@ -86,7 +86,7 @@ def yards_to_go():
     """Will let player know what down it is"""
 
 
-def play_selection():
+def drive():
     """Player can choose to run or pass the ball"""
     play = input("Do you want to run or pass the ball? ").lower()
     game_continue = True
@@ -96,28 +96,38 @@ def play_selection():
         print("Please select a valid play choice.")
      else:
       if play == "run":
-        if random.random() < 0.6:
+        if random.random() < .1:
+            game_continue = False
+            print("FUMBLE! Your team lost the ball! You lose!")
+            break
+        else:
+         if random.random() < 0.6:
           gain = random.randint(1, 9)
-        elif random.random() > 0.6 and random.random() < 0.85:
+         elif random.random() > 0.6 and random.random() < 0.85:
           if random.random() < 0.5:
             gain = random.randint(10, 29)
           else:
             gain = random.randint(-5, 0)
-        elif random.random() > 0.85 and random.random() < 0.95 :
+         elif random.random() > 0.85 and random.random() < 0.95 :
             gain = random.randint(30, 49)
-        else:
+         else:
             gain = random.randint(50, 99)
       elif play == "pass":
-        if random.random() < 0.3:
+        if random.random() < 0.35:
+          if random.random() < .3:
+            game_continue = False
+            print("INTERCEPTION! You lose!")
+            break
+          else:
             gain = 0
             print("The pass is incomplete.")
-        elif random.random() > 0.3 and random.random() < 0.35:
+        elif random.random() > 0.35 and random.random() < 0.4:
             gain = random.randint(-5, 0)
-        elif random.random() > 0.35 and random.random() < 0.7:
+        elif random.random() > 0.4 and random.random() < 0.8:
             gain = random.randint(1, 15)
-        elif random.random() > 0.7 and random.random() < 0.9:
+        elif random.random() > 0.8 and random.random() < 0.93:
             gain = random.randint(16, 25)
-        elif random.random() > 0.9 and random.random() < 0.97:
+        elif random.random() > 0.93 and random.random() < 0.97:
             gain = random.randint(26, 40)
         else:
             gain = random.randint(41, 99)
@@ -130,7 +140,7 @@ def play_selection():
       if location >= 100:
         game_continue = False
         location = 100
-        print(f"TOUCHDOWN {team_choice}! You win!")
+        print(f"TO THE HOUSE! TOUCHDOWN {team_choice}! You win!")
         break
       else:
         print(f"Your team gained {gain} yards!")
@@ -138,9 +148,10 @@ def play_selection():
      play = input("Do you want to run or pass the ball? ").lower()
 
 
+
 start_game()
 choose_team()
 kickoff()
-play_selection()
+drive()
 
 
