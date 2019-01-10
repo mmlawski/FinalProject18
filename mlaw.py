@@ -82,11 +82,20 @@ def kickoff():
         print("You didn't say yes, so it's a touckback. Ball starts at the 25 yard-line.")
     location = kick_return
 
+def yards_to_go():
+    """Will let player know what down it is"""
+
+
 def play_selection():
     """Player can choose to run or pass the ball"""
     play = input("Do you want to run or pass the ball? ").lower()
-    global gain
-    if play == "run":
+    game_continue = True
+    while game_continue == True:
+     global gain
+     if play not in ["run", "pass", "philly special"]:
+        print("Please select a valid play choice.")
+     else:
+      if play == "run":
         if random.random() < 0.6:
           gain = random.randint(1, 9)
         elif random.random() > 0.6 and random.random() < 0.85:
@@ -98,8 +107,7 @@ def play_selection():
             gain = random.randint(30, 49)
         else:
             gain = random.randint(50, 99)
-        print(f"Your team ran the ball for {gain} yards!")
-    elif play == "pass":
+      elif play == "pass":
         if random.random() < 0.3:
             gain = 0
             print("The pass is incomplete.")
@@ -113,30 +121,26 @@ def play_selection():
             gain = random.randint(26, 40)
         else:
             gain = random.randint(41, 99)
-        print(f"Your team got a completion of {gain} yards!")
-    elif play == "philly special":
+      else:
+        game_continue = False
         print(f"NO ONE SAW THAT COMING! TOUCHDOWN {team_choice}! YOU WIN!")
-    else:
-        print("Please select a valid play choice.")
+        break
+      global location
+      location += gain
+      if location >= 100:
+        game_continue = False
+        location = 100
+        print(f"TOUCHDOWN {team_choice}! You win!")
+        break
+      else:
+        print(f"Your team gained {gain} yards!")
+        print(f"The ball is at the {location} yard-line.")
+     play = input("Do you want to run or pass the ball? ").lower()
 
-def ball_location():
-    """Will tell player where they are on the field"""
-
-    global location
-    global gain
-
-    location += gain
-
-    print(f"The ball is at the {location} yard-line.")
 
 start_game()
 choose_team()
 kickoff()
-print(location)
-game_continue = True
-while game_continue == True:
-  play_selection()
-
-  ball_location()
+play_selection()
 
 
