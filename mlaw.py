@@ -5,7 +5,8 @@ location = 0
 kick_return = 0
 team_choice = 0
 opponent_choice = 0
-gain = 0
+down = 1
+game_continue = 0
 
 def start_game():
     """Start for code"""
@@ -77,21 +78,22 @@ def kickoff():
         else:
             kick_return = random.randint(20, 39)
         print(f"Your kick returner just returned the ball {kick_return} yards! Ball starts at the {kick_return} yard-line. ")
+        print("First and 10")
     else:
         kick_return = 25
         print("You didn't say yes, so it's a touckback. Ball starts at the 25 yard-line.")
+        print("First and 10")
     location = kick_return
-
-def yards_to_go():
-    """Will let player know what down it is"""
 
 
 def drive():
+    global location
+    global gain
+    global yards_to_go
     """Player can choose to run or pass the ball"""
-    play = input("Do you want to run or pass the ball? ").lower()
     game_continue = True
     while game_continue == True:
-     global gain
+     play = input("Do you want to run or pass the ball? ").lower()
      if play not in ["run", "pass", "philly special"]:
         print("Please select a valid play choice.")
      else:
@@ -135,7 +137,7 @@ def drive():
         game_continue = False
         print(f"NO ONE SAW THAT COMING! TOUCHDOWN {team_choice}! YOU WIN!")
         break
-      global location
+
       location += gain
       if location >= 100:
         game_continue = False
@@ -145,7 +147,24 @@ def drive():
       else:
         print(f"Your team gained {gain} yards!")
         print(f"The ball is at the {location} yard-line.")
-     play = input("Do you want to run or pass the ball? ").lower()
+        yards_to_go = 10 - gain
+        global down
+        if yards_to_go <= 0:
+         print("First down!")
+         down = 1
+         print("First and 10")
+        else:
+         down += 1
+         if down == 2:
+          print(f"Second down and {yards_to_go}")
+         elif down == 3:
+          print(f"Third down and {yards_to_go}")
+         elif down == 4:
+          print(f"Fourth down and {yards_to_go}")
+         else:
+          game_continue = False
+          print("You did not get the first down. You lose!")
+          break
 
 
 
