@@ -1,9 +1,8 @@
-# Intro to Programming Final Project - Fall 2018
+# Intro to Programming Final Project - Pocket Football by Matt Mlawski
 
-* Project details are in description.md
-* Replace the content of this file with your own info about your project before the due date
-* Don't forget to fill out the [Project Proposal Form](https://airtable.com/shrrdA41unoBvi6Ki) before break.
-
-## Setting Up Your Repo
-
-On the GitHub page for this repository, click the "Fork" button. This will create your own copy of this repository, linked to my original. Use the same cloning method we used before to clone the repository to your PythonAnywhere account
+* Mini-version of a football game where the player is on offense against the computer
+* Player has options for choosing their team, opponent, kickoff play, and whether to pass or run
+* Start on first down, must get to the yard to gain in order to keep playing
+* Watch out, you can fumble the ball or get intercepted and lose
+* If you score a touchdown, you win!
+* Look out for a tiny egg in the game where you automatically win :)
