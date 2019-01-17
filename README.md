@@ -6,5 +6,4 @@
 * Watch out, you can fumble the ball or get intercepted and lose
 * If you score a touchdown, you win!
 * Look out for a tiny egg in the game where you automatically win :)
-
-* Shoutout to Omay and Mrs. Gerstein for all their help!
+* Shoutout to Omay, Nikki, and Mrs. Gerstein for all their help! And Cara for trying to break it!
