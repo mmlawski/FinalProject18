@@ -48,7 +48,7 @@ def choose_team():
          else:
              bruh = False
              print(f"{team_choice} vs. {opponent_choice}: What a matchup! Let's get this game started!\n")
-    return
+    return #Will use team and opponent later on so this returns all the inputs from the function
 
 def kickoff():
     """Player decides whether they want to return the kickoff, associated gain on kickoff depending on input"""
