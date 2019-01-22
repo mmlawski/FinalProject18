@@ -52,7 +52,7 @@ def choose_team():
     return
 
 def kickoff():
-    """First play of game"""
+    """Takes input and determines the yard gain on the kickoff"""
     kickoff_choice = input(f"The {opponent_choice} are kicking off to your end zone. Do you want to return the kickoff? ").lower()
     global kick_return
     global location
