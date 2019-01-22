@@ -82,16 +82,19 @@ def run_func():
     """Determines yard gain on running play"""
     global gain
     if random.random() < 0.8:
-      gain = random.randint(1, 9) #For example, you have an 80% chance of gaining between 1 and 9 yards on a run play
+      if random.random() < .7:
+        gain = random.randint(1, 6) #For example, you have an 80% chance of gaining between 1 and 9 yards on a run play, and you have about a 56% chance to gain between 1 and 6 yards
+      else:
+        gain = random.randint(7, 9)
     elif random.random() > 0.8 and random.random() < 0.95:
-      if random.random() < 0.6:
-        gain = random.randint(10, 29)
+      if random.random() < 0.5:
+        gain = random.randint(10, 20)
       else:
         gain = random.randint(-5, 0)
     elif random.random() > 0.95 and random.random() < 0.99:
-      gain = random.randint(30, 40)
+      gain = random.randint(21, 30)
     else:
-      gain = random.randint(41, 99)
+      gain = random.randint(31, 99)
 
 
 def pass_func():
