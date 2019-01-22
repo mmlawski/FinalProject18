@@ -9,3 +9,4 @@
 * Shoutout to Omay, Nikki, and Mrs. Gerstein for all their help! And Cara for trying to break it!
 
 https://drive.google.com/file/d/1nSCEEQAk8347Qyp0WYinZUbhLXXwVmin/preview (FLOWCHART)
+https://docs.google.com/presentation/d/1-WFbiogxxllnA_GYE7zdmKzeu5bEC5DC6U9PaaCW_pw/edit?usp=sharing (PRESENTATION)
