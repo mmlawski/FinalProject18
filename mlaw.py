@@ -13,16 +13,15 @@ def start_game():
     """Start for code"""
     print("Welcome to Pocket Football!\n")
     global game_continue
-    game_continue = True
     while game_continue == True:
       start = input("Would you like to play? Yes or no answers please. \n").lower()
       if start == "no":
        game_continue = False
        print("Well then. I hope your final project bugs out.")
-       time.sleep(600000)
+       time.sleep(600000) #Game will pretty much stop
       elif start == "yes":
        print("Glad to hear! Let's go!\n")
-       return
+       return #Will go to next function
       else:
        print("Please pick either yes or no.")
 
