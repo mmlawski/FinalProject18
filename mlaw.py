@@ -9,6 +9,14 @@ opponent_choice = 0
 down = 1
 game_continue = True
 
+class creator:
+    def __init__(self, name, fave_football_team):
+        """Can be used to describe anyone who is playing, but will describe me at the beginning of the game"""
+        self.name = name
+        self.fave_football_team = fave_football_team
+
+matt = creator("Matt Mlawski", "Jets")
+
 def start_game():
     """Start for code"""
     print("Welcome to Pocket Football!\n")
@@ -197,7 +205,7 @@ def drive():
             break
 
 
-
+print(f"Hey, B 3/4 Tech! My name is {matt.name}, and my favorite football team is the {matt.fave_football_team}. Let's get this started!\n")
 start_game()
 choose_team()
 kickoff()
