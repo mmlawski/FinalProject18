@@ -56,27 +56,31 @@ def kickoff():
     global kick_return
     global location
     if kickoff_choice == "yes":
-        if random.random() < 0.08:
+        if random.random() < 0.1:
             if random.random() < 0.7:
-                kick_return = random.randint(1, 9)
+                kick_return = random.randint(5, 9)
             else:
-                kick_return = random.randint(70, 100)
-        elif random.random() > 0.08 and random.random() < 0.25:
+                kick_return = random.randint(70, 200) #200 is here so that there is a better chance of scoring a touchdown on the kickoff
+        elif random.random() > 0.1 and random.random() < 0.25:
             if random.random() < 0.8:
                 kick_return = random.randint(10, 19)
             else:
                 kick_return = random.randint(50, 69)
         elif random.random() > 0.25 and random.random() < 0.33:
-            kick_return = random.randint(40, 49) #For example, you have an 8% chance of returning the kickoff between 40 and 49 yards
+            kick_return = random.randint(34, 49) #For example, you have an 8% chance of returning the kickoff between 40 and 49 yards
         else:
-            kick_return = random.randint(20, 39)
-        print(f"Your kick returner just returned the ball {kick_return} yards! Ball starts at the {kick_return} yard-line. \n")
-        print("First and 10\n")
+            kick_return = random.randint(20, 33)
+        location = kick_return
+        if location >= 100:
+            print("YOU JUST TOOK THE KICKOFF FOR A TOUCHDOWN! YOU WIN!")
+            time.sleep(600000) #Game will pretty much stop
+        else:
+            print(f"Your kick returner just returned the ball {kick_return} yards! Ball starts at the {kick_return} yard-line. \n")
+            print("First and 10\n")
     else:
         kick_return = 25
         print("You didn't say yes, so it's a touchback. Ball starts at the 25 yard-line.\n")
         print("First and 10\n")
-    location = kick_return
 
 def run_func():
     """Determines yard gain on running play"""
@@ -94,7 +98,10 @@ def run_func():
     elif random.random() > 0.95 and random.random() < 0.99:
       gain = random.randint(21, 30)
     else:
-      gain = random.randint(31, 99)
+      if random.random() < .8:
+        gain = random.randint(31, 45)
+      else:
+        gain = random.randint(46, 99)
 
 
 def pass_func():
@@ -117,7 +124,13 @@ def pass_func():
     elif random.random() > 0.93 and random.random() < 0.99:
       gain = random.randint(26, 40)
     else:
-      gain = random.randint(41, 99)
+      if random.random() < .7:
+        gain = random.randint(41, 50)
+      else:
+        if random.random() < .7:
+          gain = random.randint(51, 60)
+        else:
+          gain = random.randint(61, 99)
 
 
 def drive():
